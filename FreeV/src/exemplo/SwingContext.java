@@ -17,6 +17,8 @@ public class SwingContext extends GameContext {
         _frame.setSize(x, y);
         _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         _frame.setResizable(false);
+        _frame.setFocusable(true);
+        _frame.requestFocus();
         
     }
     
