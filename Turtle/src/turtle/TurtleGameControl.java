@@ -6,7 +6,6 @@ package turtle;
  */
 public class TurtleGameControl {
 
-    TurtleBoardControl tbc;
     private final int END = 9;
     private final int PEN_UP = 1;
     private final int PEN_DOWN = 2;
@@ -14,6 +13,8 @@ public class TurtleGameControl {
     private final int RIGHT = 4;
     private final int WALK = 5;
     private final int PRINT = 6;
+    private final int SIZE = 18;
+    private TurtleBoardControl tbc;
 
     public TurtleGameControl() {
 
@@ -21,19 +22,17 @@ public class TurtleGameControl {
 
     public void start() {
 
-        Board board = new Board(20);
-        Turtle turtle = new Turtle(new Point(8, 6));
-        tbc = new TurtleBoardControl(turtle, board);
+        tbc = new TurtleBoardControl(new Turtle(new Point(1, 1), new Point(1, 0)), new Board(SIZE));
         int option;
 
         do {
             option = options();
             switch (option) {
                 case PEN_UP:
-                    turtle.pen(false);
+                    tbc.write(false);
                     break;
                 case PEN_DOWN:
-                    turtle.pen(true);
+                    tbc.write(true);
                     break;
                 case LEFT:
                     tbc.turnLeftTurtle();
@@ -45,7 +44,8 @@ public class TurtleGameControl {
                     tbc.moveTurtle(new Console().readInteger());
                     break;
                 case PRINT:
-                    board.print();
+                    tbc.printBoard();
+                    //tbc.printTurtle();
                     break;
                 case END:
                     break;

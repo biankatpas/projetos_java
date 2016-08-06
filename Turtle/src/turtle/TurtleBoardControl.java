@@ -9,18 +9,17 @@ public class TurtleBoardControl {
     private Turtle turtle;
     private Board board;
 
-    public TurtleBoardControl() {
-    }
-
     public TurtleBoardControl(Turtle turtle, Board board) {
         this.turtle = turtle;
         this.board = board;
     }
 
     public void moveTurtle(int step) {
-        turtle.move(step-1);
-        write(turtle.pen(), step-1);
-
+        if (turtle.pen()) {
+            writeMove(step);
+        } else {
+            noWriteMove(step);
+        }
     }
 
     public void turnLeftTurtle() {
@@ -31,34 +30,41 @@ public class TurtleBoardControl {
         turtle.turnRight();
     }
 
-    private void write(boolean status, int step) {
-        if (status) {
-            writeMove(step);
-        } else {
-            noWriteMove(step);
-        }
+    public void write(boolean status) {
+        turtle.pen(status);
     }
 
-    public void print() {
+    public void printBoard() {
+        board.print();
+    }
+
+    public void printTurtle() {
+        //implementar
 
     }
 
     private void writeMove(int step) {
-        if (turtle.getPosition().getX() == turtle.getDirection().getX()) {
-            if (turtle.getPosition().getY() < turtle.getDirection().getY()) {
-                algumaSoma(turtle.getPosition().getX(), turtle.getPosition().getY(), step, "y");
-            } else if (turtle.getPosition().getY() > turtle.getDirection().getY()) {
-                algumaDiminui(turtle.getPosition().getX(), turtle.getPosition().getY(), step, "y");
+        Point direction = new Point(turtle.getDirection().getX(), turtle.getDirection().getY());
+        Point posTurtle = new Point(turtle.getPosition().getX(), turtle.getPosition().getY());
 
-            }
-        } else if (turtle.getPosition().getY() == turtle.getDirection().getY()) {
-            if (turtle.getPosition().getX() < turtle.getDirection().getX()) {
-                algumaSoma(turtle.getPosition().getY(), turtle.getPosition().getX(), step, "x");
-            } else if (turtle.getPosition().getX() > turtle.getDirection().getX()) {
-                algumaDiminui(turtle.getPosition().getY(), turtle.getPosition().getX(), step, "x");
-            }
+        for (int i = 0; i < step; i++) {
 
+            if (direction.getX() == 1) {
+                board.write(posTurtle.getX() + i, posTurtle.getY());
+            }
+            if (direction.getX() == -1) {
+                board.write(posTurtle.getX() - i, posTurtle.getY());
+            }
+            if (direction.getY() == 1) {
+                board.write(posTurtle.getX(), posTurtle.getY() + i);
+            }
+            if (direction.getY() == -1) {
+                board.write(posTurtle.getX(), posTurtle.getY() - i);
+            }
         }
+
+        turtle.move(step);
+
     }
 
     private void noWriteMove(int step) {
@@ -66,31 +72,7 @@ public class TurtleBoardControl {
     }
 
     private void checkOutOfBoard(Point turtlePosition) {
-        
-
+        //implementar
     }
 
-    private void algumaSoma(int posicao, int analisado, int step, String letra) {
-        int aux = analisado;
-        for (int i = aux; i <= aux + step; i++) {
-            if (letra.equals("y")) {
-                board.write(posicao, i);
-            } else {
-                board.write(i, posicao);
-            }
-        }
-
-    }
-
-    private void algumaDiminui(int posicao, int analisado, int step, String letra) {
-
-        int aux = analisado;
-        for (int i = aux; i >= aux - step; i--) {
-            if (letra.equals("y")) {
-                board.write(posicao, i);
-            } else {
-                board.write(i, posicao);
-            }
-        }
-    }
 }
