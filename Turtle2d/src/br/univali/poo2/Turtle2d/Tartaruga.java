@@ -66,7 +66,7 @@ public class Tartaruga extends Sprite {
          
         
         dbg.drawImage(img, (int) x, (int) y, (int) sizeX, (int) sizeY, null);
-        //dbg.setTransform(tf);
+        dbg.setTransform(tf);
 
     }
 
