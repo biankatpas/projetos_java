@@ -45,7 +45,6 @@ public class TurtleGameControl {
                     break;
                 case PRINT:
                     tbc.printBoard();
-                    //tbc.printTurtle();
                     break;
                 case END:
                     break;

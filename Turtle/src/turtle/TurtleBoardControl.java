@@ -42,6 +42,8 @@ public class TurtleBoardControl {
         Point direction = new Point(turtle.getDirection().getX(), turtle.getDirection().getY());
         Point posTurtle = new Point(turtle.getPosition().getX(), turtle.getPosition().getY());
 
+        step = checkOutOfBoard(posTurtle, direction, step);
+
         for (int i = 0; i < step; i++) {
 
             if (direction.getX() == 1) {
@@ -63,11 +65,38 @@ public class TurtleBoardControl {
     }
 
     private void noWriteMove(int step) {
+        Point direction = new Point(turtle.getDirection().getX(), turtle.getDirection().getY());
+        Point posTurtle = new Point(turtle.getPosition().getX(), turtle.getPosition().getY());
+        step = checkOutOfBoard(posTurtle, direction, step);
         turtle.move(step);
+
     }
 
-    private void checkOutOfBoard(Point turtlePosition) {
-        //implementar
+    private int checkOutOfBoard(Point turtlePosition, Point turtleDirection, int step) {
+
+        if (turtleDirection.getX() == 1) {
+            if (turtlePosition.getX() + step > board.size()) {
+                return 0;
+            }
+        }
+        if (turtleDirection.getX() == -1) {
+            if (turtlePosition.getX() - step < 0) {
+                return 0;
+            }
+        }
+        if (turtleDirection.getY() == 1) {
+            if (turtlePosition.getY() + step > board.size()) {
+                return 0;
+            }
+
+        }
+        if (turtleDirection.getY() == -1) {
+            if (turtlePosition.getY() - step < 0) {
+                return 0;
+            }
+        }
+
+        return step;
     }
 
 }

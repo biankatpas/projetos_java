@@ -7,9 +7,10 @@ package turtle;
 public class Board {
 
     private int _board[][];
+    private final int MOLDURA = 2;
 
     public Board(int size) {
-        _board = new int[size + 2][size + 2];
+        _board = new int[size + MOLDURA][size + MOLDURA];
     }
 
     public void write(int row, int column) {
@@ -18,7 +19,7 @@ public class Board {
 
     public void print() {
 
-        for (int i = 0; i < _board.length + 2; ++i) {
+        for (int i = 0; i < _board.length + MOLDURA; ++i) {
             System.out.print("*");
         }
 
@@ -40,10 +41,14 @@ public class Board {
 
             System.out.println("*");
         }
-        for (int i = 0; i < _board.length + 2; ++i) {
+        for (int i = 0; i < _board.length + MOLDURA; ++i) {
             System.out.print("*");
         }
         System.out.println();
+    }
+
+    public int size() {
+        return _board.length;
     }
 
 }
