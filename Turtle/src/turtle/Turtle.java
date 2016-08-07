@@ -37,13 +37,23 @@ public class Turtle {
     }
 
     public void turnRight() {
-        direction.setX((0 * direction.getX()) + (-1 * direction.getY()));
-        direction.setY((1 * direction.getX() + 0 * direction.getY()));
+
+        int newX = ((0 * direction.getX()) + (-1 * direction.getY()));
+        int newY = ((1 * direction.getX() + 0 * direction.getY()));
+
+        direction.setX(newX);
+        direction.setY(newY);
+
     }
 
     public void turnLeft() {
-        direction.setX((0 * direction.getX()) + (1 * direction.getY()));
-        direction.setY((-1 * direction.getX()) + (0 * direction.getY()));
+
+        int newX = ((0 * direction.getX()) + (1 * direction.getY()));
+        int newY = ((-1 * direction.getX()) + (0 * direction.getY()));
+
+        direction.setX(newX);
+        direction.setY(newY);
+
     }
 
     public void move(int step) {
