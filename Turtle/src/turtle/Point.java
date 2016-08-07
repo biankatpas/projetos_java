@@ -1,7 +1,5 @@
 package turtle;
 
-import java.util.Vector;
-
 /**
  *
  * @author biankatpas
@@ -40,17 +38,12 @@ public class Point {
         this.y = y;
     }
 
-    public Point sum(Vector<Point> points) {
-        Point sum = new Point();
-
-        for (Point point : points) {
-            sum.setX(sum.getX() + point.getX());
-            sum.setY(sum.getY() + point.getY());
-        }
-        return sum;
+    public void sumPoint(Point point) {
+        x += point.getX();
+        y += point.getY();
     }
 
-    public Point mult(int scale) {
+    public Point multNumber(int scale) {
         Point mult = new Point();
         mult.setX(x * scale);
         mult.setY(y * scale);
@@ -58,7 +51,7 @@ public class Point {
     }
 
     public void print() {
-        System.out.println("my x = "+x + "\nmy y = " + y);
+        System.out.println("my x = " + x + "\nmy y = " + y);
     }
 
 }

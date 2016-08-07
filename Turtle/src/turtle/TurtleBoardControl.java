@@ -38,11 +38,6 @@ public class TurtleBoardControl {
         board.print();
     }
 
-    public void printTurtle() {
-        //implementar
-
-    }
-
     private void writeMove(int step) {
         Point direction = new Point(turtle.getDirection().getX(), turtle.getDirection().getY());
         Point posTurtle = new Point(turtle.getPosition().getX(), turtle.getPosition().getY());

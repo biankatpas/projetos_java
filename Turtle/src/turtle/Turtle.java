@@ -37,32 +37,17 @@ public class Turtle {
     }
 
     public void turnRight() {
-
-        int newX = ((0 * direction.getX()) + (-1 * direction.getY()));
-        int newY = ((1 * direction.getX() + 0 * direction.getY()));
-
-        direction.setX(newX);
-        direction.setY(newY);
-
+        direction.setX((0 * direction.getX()) + (-1 * direction.getY()));
+        direction.setY((1 * direction.getX() + 0 * direction.getY()));
     }
 
     public void turnLeft() {
-
-        int newX = ((0 * direction.getX()) + (1 * direction.getY()));
-        int newY = ((-1 * direction.getX()) + (0 * direction.getY()));
-
-        direction.setX(newX);
-        direction.setY(newY);
-
+        direction.setX((0 * direction.getX()) + (1 * direction.getY()));
+        direction.setY((-1 * direction.getX()) + (0 * direction.getY()));
     }
 
     public void move(int step) {
-        int moveInX = direction.getX() * step;
-        int moveInY = direction.getY() * step;
-
-        position.setX(position.getX() + moveInX);
-        position.setY(position.getY() + moveInY);
-
+        position.sumPoint(direction.multNumber(step));
     }
 
     public boolean pen() {
