@@ -37,7 +37,7 @@ public class GameEngine {
     }
 
     private void draw() {
-        //_ctx.draw();
+       
     }
 
 }
