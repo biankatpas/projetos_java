@@ -6,13 +6,15 @@ package exemplo;
  */
 public abstract class GameContext {
 
+    private int _w;
+    private int _h;
+
     public GameContext(int h, int w) {
         _h = h;
         _w = w;
     }
 
-    public abstract void draw();
+    public abstract void draw(DisplayFile df);
 
-    private final int _w;
-    private final int _h;
+    public abstract int loadImage(String path);
 }

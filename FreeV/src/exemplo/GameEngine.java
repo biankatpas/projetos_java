@@ -6,6 +6,10 @@ package exemplo;
  */
 public class GameEngine {
 
+    private boolean _inGame;
+    private GameContext _ctx;
+    private DisplayFile _df;
+
     public GameEngine() {
         _inGame = true;
         _ctx = new SwingContext(300, 300);
@@ -33,9 +37,7 @@ public class GameEngine {
     }
 
     private void draw() {
-        _ctx.draw();
+       
     }
 
-    private boolean _inGame;
-    private GameContext _ctx;
 }
