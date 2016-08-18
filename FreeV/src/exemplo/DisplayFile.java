@@ -19,7 +19,7 @@ public class DisplayFile {
     }
 
     public void add(GameEntity e, int layer) {
-        _layers[layer].add(e);
+        _layers[layer-1].add(e);
 
     }
 

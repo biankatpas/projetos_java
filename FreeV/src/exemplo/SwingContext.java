@@ -1,5 +1,7 @@
 package exemplo;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JFrame;
 
 /**
@@ -15,7 +17,8 @@ public class SwingContext extends GameContext {
         super(x, y);
 
         _frame = new JFrame("FreeV");
-        _frame.add(new GamePanel());
+        _gamePanel = new GamePanel();
+        _frame.add(_gamePanel);
         _frame.setVisible(true);
         _frame.setSize(x, y);
         _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,23 +28,22 @@ public class SwingContext extends GameContext {
 
     }
 
-    public void draw() {
-        _frame.repaint();
-    }
+     private void _wait() {
+     try {
+     Thread.sleep(100);
+     } catch (InterruptedException e) {
 
-    private void _wait() {
-        try {
-            Thread.sleep(0);
-        } catch (InterruptedException e) {
-
-        }
-    }
-
+     }
+     }
     @Override
     public void draw(DisplayFile df) {
-        for (int i = 0; i < df.layerSize(); i++) {
-            
-        }
+       
+         _gamePanel.setDisplayFile(df);
+        _frame.repaint();
+        
+       this._wait();
+       
+       
     }
 
     @Override
